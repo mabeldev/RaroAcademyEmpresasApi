@@ -1,20 +1,59 @@
+using Academy.Empresas.IoC;
+//using Microsoft.AspNetCore.Authentication.JwtBearer;
+//using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("Academy.EmpresaApi");
+
+NativeInjectorBootStrapper.RegisterAppDependencies(builder.Services);
+NativeInjectorBootStrapper.RegisterAppDependenciesContext(builder.Services, connectionString);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(swagger =>
+{
+    swagger.SwaggerDoc("v1",
+                        new Microsoft.OpenApi.Models.OpenApiInfo
+                        {
+                            Title = "Academy.EmpresasApi",
+                            Version = "v1",
+                            Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "Mabel" },
+                        });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+    swagger.IncludeXmlComments(xmlPath);
+});
+
+// builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
+// {
+//     option.TokenValidationParameters = new TokenValidationParameters
+//     {
+//         ValidateIssuerSigningKey = true,
+//         IssuerSigningKey = new SymmetricSecurityKey(secretKey),
+//         ValidateIssuer = false,
+//         ValidateAudience = false
+//     };
+// });
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(swagger =>
+    {
+        swagger.SwaggerEndpoint("/swagger/v1/swagger.json", "Academy EmpresasApi");
+    });
 }
+
+app.UseAuthentication();
 
 app.UseHttpsRedirection();
 
