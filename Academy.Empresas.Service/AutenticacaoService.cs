@@ -1,16 +1,29 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Academy.Empresas.Domain.Interfaces.Service;
+using Academy.Empresas.Domain.Interfaces.Repository;
+using Academy.Empresas.Domain.Shared;
 
 namespace Academy.Empresas.Service
 {
     public class AutenticacaoService : IAutenticacaoService
     {
-        public Task<string> Login(string usuario, string senha)
+        private readonly IUsuarioRepository _usuarioRepository;
+
+        public AutenticacaoService(IUsuarioRepository usuarioRepository)
         {
-            throw new NotImplementedException();
+            _usuarioRepository = usuarioRepository;
+        }
+        public async Task<string> Login(string email, string senha)
+        {
+            var result = await _usuarioRepository.GetByEmail(email);
+
+            var _senhaCriptografada = Cryptography.Encrypt(senha);
+
+            if (result != null && result.Senha == _senhaCriptografada)
+            {
+                return Token.GenerateToken(result);
+            }
+
+            return string.Empty;
         }
     }
 }
