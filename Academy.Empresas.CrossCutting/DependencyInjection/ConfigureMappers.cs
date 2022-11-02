@@ -14,6 +14,8 @@ namespace Academy.Empresas.CrossCutting.DependencyInjection
             var config = new AutoMapper.MapperConfiguration(cnf =>
             {
                 cnf.AddProfile(new UsuarioEntityToContractMap());
+                cnf.AddProfile(new EmpresaEntityToContractMap());
+                cnf.AddProfile(new EnderecoEntityToContractMap());
             });
 
             var mapConfiguration = config.CreateMapper();

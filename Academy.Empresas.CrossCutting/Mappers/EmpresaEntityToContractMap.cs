@@ -4,9 +4,9 @@ using AutoMapper;
 
 namespace Academy.Empresas.CrossCutting.Mappers
 {
-    public class EmpresaEntitiyToContractMap : Profile
+    public class EmpresaEntityToContractMap : Profile
     {
-        public EmpresaEntitiyToContractMap()
+        public EmpresaEntityToContractMap()
         {
             CreateMap<EmpresaEntity, EmpresaRequest>().ReverseMap();
             CreateMap<EmpresaEntity, EmpresaResponse>().ReverseMap();
