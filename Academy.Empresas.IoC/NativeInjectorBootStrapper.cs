@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Academy.Empresas.CrossCutting.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,7 +7,7 @@ namespace Academy.Empresas.IoC
     {
         public static void RegisterAppDependencies(this IServiceCollection services)
         {
-            //ConfigureServices.ConfigureDependenciesService(services);
+            ConfigureServices.ConfigureDependenciesService(services);
             ConfigureMappers.ConfigureDependenciesMapper(services);
         }
 

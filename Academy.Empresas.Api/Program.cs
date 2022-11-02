@@ -1,9 +1,9 @@
 using Academy.Empresas.IoC;
-//using Microsoft.AspNetCore.Authentication.JwtBearer;
-//using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +26,7 @@ builder.Services.AddSwaggerGen(swagger =>
                             Title = "Academy.EmpresasApi",
                             Version = "v1",
                             Contact = new Microsoft.OpenApi.Models.OpenApiContact { Name = "Mabel" },
+                            TermsOfService = new Uri("http://raroacademy.com")
                         });
 
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -34,16 +35,19 @@ builder.Services.AddSwaggerGen(swagger =>
     swagger.IncludeXmlComments(xmlPath);
 });
 
-// builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
-// {
-//     option.TokenValidationParameters = new TokenValidationParameters
-//     {
-//         ValidateIssuerSigningKey = true,
-//         IssuerSigningKey = new SymmetricSecurityKey(secretKey),
-//         ValidateIssuer = false,
-//         ValidateAudience = false
-//     };
-// });
+var _secretKey = builder.Configuration["SecretKey"];
+var secretKey = Encoding.ASCII.GetBytes(_secretKey);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
+{
+    option.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(secretKey),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 var app = builder.Build();
 

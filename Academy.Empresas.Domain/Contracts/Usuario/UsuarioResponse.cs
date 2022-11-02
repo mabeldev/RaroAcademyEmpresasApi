@@ -12,6 +12,5 @@ namespace Academy.Empresas.Domain.Contracts.Usuario
         public string Nome { get; set; }
         public string Email { get; set; }
         public EnderecoResponse Endereco { get; set; }
-        
     }
 }
