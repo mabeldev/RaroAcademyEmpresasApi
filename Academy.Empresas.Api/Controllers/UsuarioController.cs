@@ -1,11 +1,13 @@
 using Academy.Empresas.Domain.Contracts.Usuario;
+using Academy.Empresas.Domain.Enum;
 using Academy.Empresas.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academy.Empresas.Api.Controllers
 {
-    [Route("[controller]")]
+    [ApiController]
+    [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
@@ -28,14 +30,14 @@ namespace Academy.Empresas.Api.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<UsuarioResponse>> Get()
         {
             return await _usuarioService.Get();
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Admin")]
         public async Task<UsuarioResponse> GetById(int id)
         {
             return await _usuarioService.GetById(id);

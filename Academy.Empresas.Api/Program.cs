@@ -3,6 +3,7 @@ using Academy.Empresas.IoC;
 //using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,9 @@ var connectionString = builder.Configuration.GetConnectionString("Academy.Empres
 NativeInjectorBootStrapper.RegisterAppDependencies(builder.Services);
 NativeInjectorBootStrapper.RegisterAppDependenciesContext(builder.Services, connectionString);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(
+        options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter())
+    );
 
 builder.Services.AddEndpointsApiExplorer();
 

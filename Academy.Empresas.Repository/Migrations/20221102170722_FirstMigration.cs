@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -59,7 +58,7 @@ namespace Academy.Empresas.Repository.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CPF = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DataDeNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataDeNascimento = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EnderecoId = table.Column<int>(type: "int", nullable: false)
                 },

@@ -1,5 +1,6 @@
 
 using Academy.Empresas.Domain.Contracts.Endereco;
+using Academy.Empresas.Domain.Enum;
 
 namespace Academy.Empresas.Domain.Contracts.Usuario
 {
@@ -9,7 +10,8 @@ namespace Academy.Empresas.Domain.Contracts.Usuario
         public string? Telefone { get; set; }
         public string Email { get; set; }
         public string CPF { get; set; }
-        public DateTime DataDeNascimento { get; set; }
+        public RoleEnum Role { get; set; }
+        public string DataDeNascimento { get; set; }
         public EnderecoRequest Endereco { get; set; }
     }
 }

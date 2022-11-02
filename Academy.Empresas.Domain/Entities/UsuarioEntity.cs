@@ -9,7 +9,7 @@ namespace Academy.Empresas.Domain.Entities
         public string Email { get; set; }
         public string Senha { get; set; }
         public string CPF { get; set; }
-        public DateTime DataDeNascimento { get; set; }
+        public string DataDeNascimento { get; set; }
 
         //Enum
         public RoleEnum Role { get; set; }
