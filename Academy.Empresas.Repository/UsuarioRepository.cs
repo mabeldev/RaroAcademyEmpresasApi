@@ -15,7 +15,7 @@ namespace Academy.Empresas.Repository
 
         public async Task<IEnumerable<UsuarioEntity>> Get()
         {
-            return await _context.Usuarios.AsNoTracking().ToListAsync();
+            return await _context.Usuarios.AsNoTracking().Include(prop => prop.Endereco).ToListAsync();
         }
 
         public async Task<UsuarioEntity> GetById(int id)

@@ -11,6 +11,7 @@ namespace Academy.Empresas.CrossCutting.Mappers
             CreateMap<UsuarioEntity, UsuarioRequest>().ReverseMap();
             CreateMap<UsuarioEntity, UsuarioCadastroRequest>().ReverseMap();
             CreateMap<UsuarioEntity, UsuarioResponse>().ReverseMap();
+            CreateMap<UsuarioEntity, AdminUsuarioResponse>().ReverseMap();
         }
     }
 }

@@ -30,14 +30,21 @@ namespace Academy.Empresas.Api.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Cliente")]
         public async Task<IEnumerable<UsuarioResponse>> Get()
         {
             return await _usuarioService.Get();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("Admin")]
         [Authorize(Roles = "Admin")]
+        public async Task<IEnumerable<AdminUsuarioResponse>> AdminGet()
+        {
+            return await _usuarioService.AdminGet();
+        }
+
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Admin, Cliente")]
         public async Task<UsuarioResponse> GetById(int id)
         {
             return await _usuarioService.GetById(id);

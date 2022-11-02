@@ -40,6 +40,12 @@ namespace Academy.Empresas.Service
 
             return _mapper.Map<IEnumerable<UsuarioResponse>>(listaUsuariosRetornoBaseDados);
         }
+        public async Task<IEnumerable<AdminUsuarioResponse>> AdminGet()
+        {
+            var listaUsuariosRetornoBaseDados = await _usuarioRepository.Get();
+
+            return _mapper.Map<IEnumerable<AdminUsuarioResponse>>(listaUsuariosRetornoBaseDados);
+        }
 
         public async Task<UsuarioResponse> GetById(int id)
         {
@@ -67,5 +73,6 @@ namespace Academy.Empresas.Service
                 await _usuarioRepository.Delete(usuarioBancoDeDados);
             }
         }
+
     }
 }
