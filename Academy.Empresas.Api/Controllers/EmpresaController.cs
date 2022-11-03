@@ -21,13 +21,23 @@ namespace Academy.Empresas.Api.Controllers
         {
             _empresaService = empresaService;
         }
-
+        
+        /// <summary>
+        /// Através dessa rota você será capaz de criar a sua empresa no banco de dados.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Sucesso, e retorna uma lista de elementos</response>
         [HttpPost]
         public async Task<EmpresaResponse> Post(EmpresaRequest empresaRequest)
         {
             return await _empresaService.Post(empresaRequest);
         }
 
+        /// <summary>
+        /// Através dessa rota você será capaz de buscar as empresas do banco de dados.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Sucesso, e retorna uma lista de elementos</response>
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IEnumerable<EmpresaResponse>> Get()
@@ -35,6 +45,11 @@ namespace Academy.Empresas.Api.Controllers
             return await _empresaService.Get();
         }
 
+        /// <summary>
+        /// Através dessa rota você será capaz de buscar a empresa por Id no banco de dados.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Sucesso, e retorna um elemento</response>
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<EmpresaResponse> GetById(int id)
@@ -42,12 +57,22 @@ namespace Academy.Empresas.Api.Controllers
             return await _empresaService.GetById(id);
         }
 
+        /// <summary>
+        /// Através dessa rota você será capaz de alterar informações da empresa no banco de dados.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Sucesso, e retorna algumas informações do elemento</response>
         [HttpPut("{id}")]
         public async Task<EmpresaResponse> Put(int id, EmpresaRequest empresaRequest)
         {
             return await _empresaService.Put(empresaRequest, id);
         }
 
+        /// <summary>
+        /// Através dessa rota você será capaz de deletar uma empresa no banco de dados.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Sucesso</response>
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {

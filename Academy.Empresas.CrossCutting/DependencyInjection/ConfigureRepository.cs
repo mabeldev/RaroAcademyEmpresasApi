@@ -10,6 +10,7 @@ namespace Academy.Empresas.CrossCutting.DependencyInjection
         public static void ConfigureDependenciesRepository(IServiceCollection serviceCollection, string connectionString)
         {
             serviceCollection.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            serviceCollection.AddScoped<IEmpresaRepository, EmpresaRepository>();
             serviceCollection.AddDbContext<EmpresasApiContext>(options => options.UseSqlServer(connectionString));
         }
     }

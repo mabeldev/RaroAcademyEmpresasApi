@@ -14,6 +14,11 @@ namespace Academy.Empresas.Api.Controllers
             _autenticacaoService = autenticacaoService;
         }
 
+        /// <summary>
+        /// Através dessa rota você será capaz de logar no sistema.
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">Sucesso, e retorna uma lista de elementos</response>
         [HttpPost]
         public async Task<string> Login(string email, string senha)
         {
