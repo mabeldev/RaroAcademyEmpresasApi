@@ -18,7 +18,7 @@ namespace Academy.Empresas.Domain.Shared
                 {
                     new Claim(ClaimTypes.GivenName, user.Email.ToString()),
                     new Claim(ClaimTypes.SerialNumber, user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, "Admin")
+                    new Claim(ClaimTypes.Role, user.Role.ToString())
                 }),
 
                 Expires = DateTime.Now.AddHours(8),
