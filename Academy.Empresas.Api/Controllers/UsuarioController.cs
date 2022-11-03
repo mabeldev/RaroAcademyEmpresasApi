@@ -40,7 +40,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <returns></returns>
         /// <response code="200">Sucesso, e retorna uma lista de elementos</response>
         [HttpGet]
-        [Authorize(Roles = "Cliente")]
+        [Authorize(Roles = "Cliente, Admin")]
         public async Task<IEnumerable<UsuarioResponse>> Get()
         {
             return await _usuarioService.Get();

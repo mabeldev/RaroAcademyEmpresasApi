@@ -1,0 +1,30 @@
+namespace ApiUsuarioEmpresa.Services.EntitiesServices
+{
+    public class ValidacoesService : IValidacaoService
+    {
+        public async Task<bool> ValidacaoEmail(string email)
+        {
+            Regex rg = new Regex(@"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$");
+            if (email == null)
+            {
+                return false;
+            }
+            if (!rg.IsMatch(email))
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        public async Task<bool> ValidacaoSenha(string senha)
+        {
+            var rg = new Regex(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}$");
+            if (senha == null || rg.IsMatch(senha))
+            {
+                return false;
+            }
+            return true;
+        }
+    }
+}
