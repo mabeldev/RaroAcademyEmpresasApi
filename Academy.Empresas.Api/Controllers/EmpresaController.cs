@@ -48,6 +48,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <summary>
         /// Através dessa rota você será capaz de buscar a empresa por Id no banco de dados.
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
         /// <response code="200">Sucesso, e retorna um elemento</response>
         [HttpGet("{id}")]
@@ -60,6 +61,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <summary>
         /// Através dessa rota você será capaz de alterar informações da empresa no banco de dados.
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
         /// <response code="200">Sucesso, e retorna algumas informações do elemento</response>
         [HttpPut("{id}")]
@@ -71,6 +73,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <summary>
         /// Através dessa rota você será capaz de deletar uma empresa no banco de dados.
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
         /// <response code="200">Sucesso</response>
         [HttpDelete("{id}")]

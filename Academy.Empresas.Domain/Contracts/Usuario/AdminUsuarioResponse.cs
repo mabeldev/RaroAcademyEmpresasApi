@@ -6,12 +6,8 @@ using Academy.Empresas.Domain.Contracts.Endereco;
 
 namespace Academy.Empresas.Domain.Contracts.Usuario
 {
-    public class AdminUsuarioResponse
+    public class AdminUsuarioResponse : UsuarioResponse
     {
-        public int id { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public EnderecoResponse Endereco { get; set; }
         public string Cpf {get; set; }
     }
 }

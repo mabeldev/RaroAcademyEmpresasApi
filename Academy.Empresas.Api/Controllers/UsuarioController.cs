@@ -61,6 +61,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <summary>
         /// Através dessa rota você será capaz de buscar um usuário pelo Id do mesmo.
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
         /// <response code="200">Sucesso, e retorna um elemento</response>
         [HttpGet("{id}")]
@@ -73,6 +74,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <summary>
         /// Através dessa rota você será capaz de atualizar os dados de um usuário.
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
         /// <response code="200">Sucesso, e retorna algumas informações do elemento</response>
         [HttpPut("{id}")]
@@ -84,6 +86,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <summary>
         /// Através dessa rota você será capaz de deletar um usuário.
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
         /// <response code="200">Sucesso</response>
         [HttpDelete("{id}")]
