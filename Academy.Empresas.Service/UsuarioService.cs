@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using Academy.Empresas.Domain.Contracts.Usuario;
 using Academy.Empresas.Domain.Entities;
+using Academy.Empresas.Domain.Enum;
 using Academy.Empresas.Domain.Interfaces.Repository;
 using Academy.Empresas.Domain.Interfaces.Service;
 using Academy.Empresas.Domain.Shared;
@@ -28,6 +29,8 @@ namespace Academy.Empresas.Service
         {
 
             Regex EmailRegex = new Regex(@"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$");
+            Regex TelefoneRegex = new Regex(@"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}-[0-9]{4}$");
+            Regex SenhaRegex = new Regex(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}$");
 
             if (usuarioRequest.Nome == null || usuarioRequest.Nome.Length <= 2)
             {
@@ -76,6 +79,25 @@ namespace Academy.Empresas.Service
                 throw new ArgumentException ("Email não corresponde a um email válido");
             }
             
+            if (!DateValidation.Validacao(usuarioRequest.DataDeNascimento))
+            {
+                throw new ArgumentException ("Data está invalida!");
+            }
+
+            if (!TelefoneRegex.IsMatch(usuarioRequest.Telefone))
+            {
+                throw new ArgumentException ("Telefone não corresponde a um telefone válido");
+            }
+
+            if (!SenhaRegex.IsMatch(usuarioRequest.Senha))
+            {
+                throw new ArgumentException ("Sua senha é muito fraca, necessário caracteres especiais, números e letras (Aa)");
+            }
+
+            if (!Enum.IsDefined(typeof(RoleEnum), usuarioRequest.Role))
+            {
+            throw new ArgumentException("Essa role não existe, use Admin ou Cliente");
+            }
 
             var requestUsuarioEntity = _mapper.Map<UsuarioEntity>(usuarioRequest);
 

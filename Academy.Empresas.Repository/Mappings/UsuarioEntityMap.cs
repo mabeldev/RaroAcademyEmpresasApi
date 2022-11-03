@@ -18,6 +18,8 @@ namespace Academy.Empresas.Repository.Mappings
                 prop => (RoleEnum)Enum.Parse(typeof(RoleEnum), prop)
             );
 
+            //builder.HasIndex(prop => prop.Email).IsUnique();
+
             builder.HasOne(prop => prop.Endereco).WithOne();
         }
     }
