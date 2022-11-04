@@ -20,7 +20,7 @@ namespace Academy.Empresas.Repository
 
         public async Task<UsuarioEntity> GetById(int id)
         {
-            return await _context.Usuarios.Where(prop => prop.Id == id).AsNoTracking().FirstOrDefaultAsync();
+            return await _context.Usuarios.Where(prop => prop.Id == id).AsNoTracking().Include(prop => prop.Endereco).FirstOrDefaultAsync();
         }
 
         public async Task<UsuarioEntity> GetByEmail(string email)

@@ -8,9 +8,8 @@ namespace Academy.Empresas.Domain.Contracts.Usuario
 {
     public class UsuarioResponse
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
-        public EnderecoResponse Endereco { get; set; }
     }
 }

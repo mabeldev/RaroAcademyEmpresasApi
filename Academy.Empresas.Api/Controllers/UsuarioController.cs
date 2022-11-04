@@ -31,7 +31,7 @@ namespace Academy.Empresas.Api.Controllers
         [HttpPost]
         public async Task<UsuarioResponse> Post(UsuarioCadastroRequest usuarioRequest)
         {
-            return await _usuarioService.Post(usuarioRequest);
+            return await _usuarioService.Post(usuarioRequest);   
         }
 
         /// <summary>
@@ -78,6 +78,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <returns></returns>
         /// <response code="200">Sucesso, e retorna algumas informações do elemento</response>
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, Cliente")]
         public async Task<UsuarioResponse> Put(int id, UsuarioRequest usuarioRequest)
         {
             return await _usuarioService.Put(usuarioRequest, id);
@@ -90,6 +91,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <returns></returns>
         /// <response code="200">Sucesso</response>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin, Cliente")]
         public async Task Delete(int id)
         {
             await _usuarioService.Delete(id);

@@ -17,6 +17,8 @@ namespace Academy.Empresas.Api.Controllers
         /// <summary>
         /// Através dessa rota você será capaz de logar no sistema.
         /// </summary>
+        /// <param name="email"></param>
+        /// <param name="senha"></param>
         /// <returns></returns>
         /// <response code="200">Sucesso, e retorna uma lista de elementos</response>
         [HttpPost]

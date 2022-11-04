@@ -39,7 +39,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <returns></returns>
         /// <response code="200">Sucesso, e retorna uma lista de elementos</response>
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Cliente")]
         public async Task<IEnumerable<EmpresaResponse>> Get()
         {
             return await _empresaService.Get();
@@ -52,7 +52,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <returns></returns>
         /// <response code="200">Sucesso, e retorna um elemento</response>
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Cliente")]
         public async Task<EmpresaResponse> GetById(int id)
         {
             return await _empresaService.GetById(id);
@@ -65,6 +65,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <returns></returns>
         /// <response code="200">Sucesso, e retorna algumas informações do elemento</response>
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, Cliente")]
         public async Task<EmpresaResponse> Put(int id, EmpresaRequest empresaRequest)
         {
             return await _empresaService.Put(empresaRequest, id);
@@ -77,6 +78,7 @@ namespace Academy.Empresas.Api.Controllers
         /// <returns></returns>
         /// <response code="200">Sucesso</response>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin, Cliente")]
         public async Task Delete(int id)
         {
             await _empresaService.Delete(id);

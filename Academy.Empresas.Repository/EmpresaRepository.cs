@@ -15,12 +15,12 @@ namespace Academy.Empresas.Repository
 
         public async Task<IEnumerable<EmpresaEntity>> Get()
         {
-            return await _context.Empresas.AsNoTracking().ToListAsync();
+            return await _context.Empresas.AsNoTracking().Include(prop => prop.Endereco).ToListAsync();
         }
 
         public async Task<EmpresaEntity> GetById(int id)
         {
-            return await _context.Empresas.Where(prop => prop.Id == id).AsNoTracking().FirstOrDefaultAsync();
+            return await _context.Empresas.Where(prop => prop.Id == id).AsNoTracking().Include(prop => prop.Endereco).FirstOrDefaultAsync();
         }
 
         public async Task<EmpresaEntity> Post(EmpresaEntity request)
