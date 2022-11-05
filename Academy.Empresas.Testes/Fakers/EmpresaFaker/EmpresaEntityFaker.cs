@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Academy.Empresas.Domain.Entities;
 using Bogus;
 
 namespace Academy.Empresas.Testes.Fakers.EmpresaFaker
@@ -13,6 +10,43 @@ namespace Academy.Empresas.Testes.Fakers.EmpresaFaker
         public static int GetId()
         {
             return Fake.IndexFaker;
+        }
+
+        public static async Task<IEnumerable<EmpresaEntity>> EmpresaEntityAsync()
+        {
+            var minhaLista = new List<EmpresaEntity>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                minhaLista.Add(new EmpresaEntity()
+                {
+                    Id = i,
+                    Nome = Fake.Name.FirstName()
+                });
+            }
+
+            return minhaLista;
+        }
+
+        public static async Task<EmpresaEntity> EmpresaEntityAsync(int id)
+        {
+            return new EmpresaEntity()
+            {
+                Id = id,
+                Nome = Fake.Name.FirstName(),
+                NomeFantasia = Fake.Name.FirstName(),
+                Endereco = EnderecoFaker.EnderecoFaker.EnderecoEntity()
+            };
+        }
+        public static EmpresaEntity EmpresaEntity()
+        {
+            return new EmpresaEntity
+            {
+                Id = Fake.IndexFaker,
+                Nome = Fake.Name.FirstName(),
+                NomeFantasia = Fake.Name.FirstName(),
+                Endereco = EnderecoFaker.EnderecoFaker.EnderecoEntity()
+            };
         }
     }
 }

@@ -20,6 +20,8 @@ namespace Academy.Empresas.Testes.CrossCutting
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new UsuarioEntityToContractMap());
+                cfg.AddProfile(new EnderecoEntityToContractMap());
+                cfg.AddProfile(new EmpresaEntityToContractMap());
             });
 
             return config.CreateMapper();

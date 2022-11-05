@@ -1,5 +1,4 @@
 using Academy.Empresas.Domain.Contracts.Usuario;
-using Academy.Empresas.Testes.Fakers.EnderecoFaker;
 using Bogus;
 using Bogus.Extensions.Brazil;
 

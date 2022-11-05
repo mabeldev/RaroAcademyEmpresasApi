@@ -1,7 +1,6 @@
 using Academy.Empresas.Domain.Entities;
 using Bogus.Extensions.Brazil;
 using Bogus;
-using Academy.Empresas.Testes.Fakers.EnderecoFaker;
 
 namespace Academy.Empresas.Testes.Fakers.Usuario
 {
