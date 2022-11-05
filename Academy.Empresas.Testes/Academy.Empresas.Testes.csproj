@@ -27,6 +27,7 @@
     <ProjectReference Include="..\Academy.Empresas.Domain\Academy.Empresas.Domain.csproj" />
     <ProjectReference Include="..\Academy.Empresas.Api\Academy.Empresas.Api.csproj" />
     <ProjectReference Include="..\Academy.Empresas.CrossCutting\Academy.Empresas.CrossCutting.csproj" />
+    <ProjectReference Include="..\Academy.Empresas.IoC\Academy.Empresas.IoC.csproj" />
   </ItemGroup>
 
 </Project>

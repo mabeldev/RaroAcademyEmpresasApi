@@ -58,5 +58,19 @@ namespace Academy.Empresas.Testes.Fakers.Usuario
                 Endereco = EnderecoFaker.EnderecoFaker.EnderecoEntity()
             };
         }
+        public static async Task<UsuarioEntity> UsuarioEntityBaseRequestAsync(string nome)
+        {
+            return new UsuarioEntity()
+            {
+                Id = Fake.IndexFaker,
+                Nome = nome,
+                Telefone = Fake.Phone.PhoneNumber(),
+                Email = Fake.Internet.Email(),
+                CPF = Fake.Person.Cpf(),
+                Role = Domain.Enum.RoleEnum.Admin,
+                DataDeNascimento = Fake.Person.DateOfBirth.Date.ToString(),
+                Endereco = EnderecoFaker.EnderecoFaker.EnderecoEntity()
+            };
+        }
     }
 }

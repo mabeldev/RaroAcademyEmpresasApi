@@ -9,23 +9,12 @@ namespace Academy.Empresas.Domain.Shared
     {
         public static bool Validacao(string date)
         {
-            try
+            DateTime temp;
+            if (DateTime.TryParse(date, out temp))
             {
-                string[] dateParts = date.Split('/');
-
-
-                DateTime testDate = new
-                    DateTime(Convert.ToInt32(dateParts[2]),
-                    Convert.ToInt32(dateParts[0]),
-                    Convert.ToInt32(dateParts[1]));
-
                 return true;
             }
-            catch
-            {
-
-                return false;
-            }
+            return false;
         }
     }
 }

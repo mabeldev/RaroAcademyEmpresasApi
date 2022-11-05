@@ -119,10 +119,7 @@ namespace Academy.Empresas.Service
             {
                 usuarioBancoDeDados.Email = usuarioRequest.Email;
             }
-            if (!usuarioBancoDeDados.Senha.Equals(usuarioRequest.Senha))
-            {
-                usuarioBancoDeDados.Senha = usuarioRequest.Senha;
-            }
+            
             if (!usuarioBancoDeDados.DataDeNascimento.Equals(usuarioRequest.DataDeNascimento))
             {
                 usuarioBancoDeDados.DataDeNascimento = usuarioRequest.DataDeNascimento;
@@ -220,7 +217,7 @@ namespace Academy.Empresas.Service
         }
         private static void ValidacaoDeTelefone(UsuarioRequest usuarioRequest)
         {
-            Regex TelefoneRegex = new Regex(@"^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}-[0-9]{4}$");
+            Regex TelefoneRegex = new Regex(@"^\(?[1-9]{2}\)?\s?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$");
             if (!TelefoneRegex.IsMatch(usuarioRequest.Telefone))
             {
                 throw new ArgumentException("Telefone não corresponde a um telefone válido");

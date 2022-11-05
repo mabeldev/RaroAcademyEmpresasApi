@@ -89,12 +89,12 @@ namespace Academy.Empresas.Testes.Fakers.UsuarioFaker
             return new UsuarioCadastroRequest
             {
                 Nome = Fake.Name.FirstName(),
-                Telefone = Fake.Phone.PhoneNumber(),
+                Telefone = Fake.Phone.PhoneNumber("(31) 9####-####"),
                 Email = Fake.Internet.Email(),
-                Senha = Fake.Internet.Password(8, true, @"^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$"),
+                Senha = Fake.Internet.Password(8, true, "", "A@1a23"),
                 CPF = Fake.Person.Cpf(),
                 Role = Domain.Enum.RoleEnum.Admin,
-                DataDeNascimento = Fake.Person.DateOfBirth.ToString(),
+                DataDeNascimento = Fake.Person.DateOfBirth.ToShortDateString(),
                 Endereco = EnderecoFaker.EnderecoFaker.EnderecoRequest()
             };
         }

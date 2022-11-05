@@ -5,12 +5,12 @@ using Moq;
 
 namespace Academy.Empresas.Testes.Controller
 {
-    [Trait("Controller", "Controller de Usuarios")]
+    [Trait("Controller", "Controller de Empresas")]
     public class EmpresaControllerTest
     {
         private readonly Mock<IEmpresaService> _mockEmpresaService = new Mock<IEmpresaService>();
 
-        [Fact(DisplayName = "Cadastra um novo Empresa")]
+        [Fact(DisplayName = "Cadastra uma nova Empresa")]
         public async Task Post()
         {
             var userRequest = EmpresaContractFaker.EmpresaRequest();
@@ -25,7 +25,7 @@ namespace Academy.Empresas.Testes.Controller
             Assert.Equal(result.Nome, resultUserRequest.Result.Nome);
         }
         
-        [Fact(DisplayName = "Lista todos os Empresas")]
+        [Fact(DisplayName = "Lista todas as Empresas")]
         public async Task Get()
         {
             _mockEmpresaService.Setup(mock => mock.Get()).Returns(EmpresaContractFaker.EmpresaResponseAsync());
@@ -38,7 +38,7 @@ namespace Academy.Empresas.Testes.Controller
         }
         
 
-        [Fact(DisplayName = "Busca um Empresa por ID")]
+        [Fact(DisplayName = "Busca uma Empresa por ID")]
         public async Task GetById()
         {
             int id = EmpresaContractFaker.GetId();
@@ -52,7 +52,7 @@ namespace Academy.Empresas.Testes.Controller
             Assert.Equal(result.Id, id);
         }
 
-        [Fact(DisplayName = "Edita um Empresa já existente")]
+        [Fact(DisplayName = "Edita uma Empresa já existente")]
         public async Task Put()
         {
             var userRequest = EmpresaContractFaker.EmpresaRequest();
@@ -67,7 +67,7 @@ namespace Academy.Empresas.Testes.Controller
             Assert.Equal(result.Nome, resultUserRequest.Result.Nome);
         }
 
-        [Fact(DisplayName = "Remove um Empresa já existente")]
+        [Fact(DisplayName = "Remove uma Empresa já existente")]
         public async Task Delete()
         {
             int id = EmpresaContractFaker.GetId();
