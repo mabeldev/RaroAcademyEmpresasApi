@@ -6,7 +6,7 @@ using Academy.Empresas.Domain.Interfaces.Repository;
 
 namespace Academy.Empresas.Service
 {
-    public class EmpresaService : IEmpresaService
+    public class EmpresaService : Validators, IEmpresaService
     {
         public readonly IEmpresaRepository _empresaRepository;
         public readonly IMapper _mapper;
@@ -21,7 +21,7 @@ namespace Academy.Empresas.Service
 
             ValidacaoDeNomeFantasia(empresaRequest);
 
-            ValidacaoDeEndereco(empresaRequest);
+            ValidacaoDeEnderecoEmpresa(empresaRequest);
 
             var requestEmpresaEntity = _mapper.Map<EmpresaEntity>(empresaRequest);
 
@@ -50,7 +50,7 @@ namespace Academy.Empresas.Service
 
             ValidacaoDeNomeFantasia(empresaRequest);
 
-            ValidacaoDeEndereco(empresaRequest);
+            ValidacaoDeEnderecoEmpresa(empresaRequest);
 
             var empresaBancoDeDados = await _empresaRepository.GetById((int)id);
 
@@ -80,58 +80,6 @@ namespace Academy.Empresas.Service
             if (empresaBancoDeDados != null)
             {
                 await _empresaRepository.Delete(empresaBancoDeDados);
-            }
-        }
-        private static void ValidacaoDeNomeFantasia(EmpresaRequest emrpesaRequest)
-        {
-            if (emrpesaRequest.NomeFantasia.Length <= 2)
-            {
-                throw new ArgumentException("Nome Fantasia de empresa é muito pequeno ou inexistente!");
-            }
-        }
-        private static void ValidacaoDeNome(EmpresaRequest emrpesaRequest)
-        {
-            if (emrpesaRequest.Nome.Length <= 2)
-            {
-                throw new ArgumentException("Nome de empresa é muito pequeno ou inexistente!");
-            }
-        }
-        private static void ValidacaoDeId(int? id)
-        {
-            if (id == null)
-            {
-                throw new ArgumentException("Id de empresa não pode ser nulo");
-            }
-        }
-        private static void ValidacaoDeEndereco(EmpresaRequest empresaRequest)
-        {
-            if (empresaRequest.Endereco.Rua.Length <= 0)
-            {
-                throw new ArgumentException("Rua não pode ser nulo");
-            }
-
-            if (empresaRequest.Endereco.Bairro.Length <= 0)
-            {
-                throw new ArgumentException("Bairro não pode ser nulo");
-            }
-
-            if (empresaRequest.Endereco.Cep.Length <= 0)
-            {
-                throw new ArgumentException("Cep não pode ser nulo");
-            }
-
-            if (empresaRequest.Endereco.Cidade.Length <= 0)
-            {
-                throw new ArgumentException("Cidade não pode ser nulo");
-            }
-
-            if (empresaRequest.Endereco.Estado.Length <= 0)
-            {
-                throw new ArgumentException("Cidade não pode ser nulo");
-            }
-            if (empresaRequest.Endereco.Numero.Length <= 0)
-            {
-                throw new ArgumentException("Numero não pode ser nulo");
             }
         }
     }
