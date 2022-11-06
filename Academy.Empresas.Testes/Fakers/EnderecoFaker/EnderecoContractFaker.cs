@@ -14,7 +14,7 @@ namespace Academy.Empresas.Testes.Fakers.EnderecoFaker
             {
                 Rua = Fake.Address.StreetName(),
                 Bairro = Fake.Address.City(),
-                Cep = Fake.Address.ZipCode("#########"),
+                Cep = Fake.Address.ZipCode("#####-###"),
                 Cidade = Fake.Address.City(),
                 Estado = Fake.Address.State(),
                 Numero = Fake.Random.Int(1,999).ToString()
@@ -27,7 +27,19 @@ namespace Academy.Empresas.Testes.Fakers.EnderecoFaker
                 Id = Fake.IndexFaker,
                 Rua = Fake.Address.StreetName(),
                 Bairro = Fake.Address.City(),
-                Cep = Fake.Address.ZipCode("#########"),
+                Cep = Fake.Address.ZipCode("#####-###"),
+                Cidade = Fake.Address.City(),
+                Estado = Fake.Address.State(),
+                Numero = Fake.Random.Int(1,999).ToString()
+            };
+        }
+        public static EnderecoResponse EnderecoResponse()
+        {
+            return new EnderecoResponse()
+            {
+                Rua = Fake.Address.StreetName(),
+                Bairro = Fake.Address.City(),
+                Cep = Fake.Address.ZipCode("#####-###"),
                 Cidade = Fake.Address.City(),
                 Estado = Fake.Address.State(),
                 Numero = Fake.Random.Int(1,999).ToString()

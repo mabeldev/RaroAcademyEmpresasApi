@@ -23,7 +23,11 @@ namespace Academy.Empresas.Testes.Fakers.UsuarioFaker
                 {
                     Id = i,
                     Nome = Fake.Name.FirstName(),
+                    Telefone = Fake.Phone.PhoneNumber("(31) 9####-####"),
                     Email = Fake.Internet.Email(),
+                    DataDeNascimento = Fake.Person.DateOfBirth.ToShortDateString(),
+                    Role = Domain.Enum.RoleEnum.Admin,
+                    Endereco = EnderecoFaker.EnderecoFaker.EnderecoResponse()
                 });
             }
 
@@ -39,8 +43,12 @@ namespace Academy.Empresas.Testes.Fakers.UsuarioFaker
                 {
                     Id = i,
                     Nome = Fake.Name.FirstName(),
+                    Telefone = Fake.Phone.PhoneNumber("(31) 9####-####"),
                     Email = Fake.Internet.Email(),
+                    DataDeNascimento = Fake.Person.DateOfBirth.ToShortDateString(),
+                    Role = Domain.Enum.RoleEnum.Admin,
                     Cpf = Fake.Person.Cpf(),
+                    Endereco = EnderecoFaker.EnderecoFaker.EnderecoResponse()
                 });
             }
 
@@ -53,7 +61,11 @@ namespace Academy.Empresas.Testes.Fakers.UsuarioFaker
             {
                 Id = id,
                 Nome = Fake.Name.FirstName(),
+                Telefone = Fake.Phone.PhoneNumber("(31) 9####-####"),
                 Email = Fake.Internet.Email(),
+                DataDeNascimento = Fake.Person.DateOfBirth.ToShortDateString(),
+                Role = Domain.Enum.RoleEnum.Admin,
+                Endereco = EnderecoFaker.EnderecoFaker.EnderecoResponse()
             };
         }
 
@@ -64,25 +76,26 @@ namespace Academy.Empresas.Testes.Fakers.UsuarioFaker
                 Nome = Fake.Name.FirstName(),
                 Telefone = Fake.Phone.PhoneNumber(),
                 Email = Fake.Internet.Email(),
+                CPF = Fake.Person.Cpf(),
                 Role = Domain.Enum.RoleEnum.Cliente,
-                DataDeNascimento = Fake.Person.DateOfBirth.ToString(),
+                DataDeNascimento = Fake.Person.DateOfBirth.ToShortDateString(),
                 Endereco = EnderecoFaker.EnderecoFaker.EnderecoRequest()
             };
         }
 
-        public static UsuarioRequest UsuarioAdminRequest()
-        {
-            return new UsuarioRequest
-            {
-                Nome = Fake.Name.FirstName(),
-                Telefone = Fake.Phone.PhoneNumber(),
-                Email = Fake.Internet.Email(),
-                CPF = Fake.Person.Cpf(),
-                Role = Domain.Enum.RoleEnum.Admin,
-                DataDeNascimento = Fake.Person.DateOfBirth.ToString(),
-                Endereco = EnderecoFaker.EnderecoFaker.EnderecoRequest()
-            };
-        }
+        // public static UsuarioRequest UsuarioAdminRequest()
+        // {
+        //     return new UsuarioRequest
+        //     {
+        //         Nome = Fake.Name.FirstName(),
+        //         Telefone = Fake.Phone.PhoneNumber(),
+        //         Email = Fake.Internet.Email(),
+        //         CPF = Fake.Person.Cpf(),
+        //         Role = Domain.Enum.RoleEnum.Admin,
+        //         DataDeNascimento = Fake.Person.DateOfBirth.ToShortDateString(),
+        //         Endereco = EnderecoFaker.EnderecoFaker.EnderecoRequest()
+        //     };
+        // }
 
         public static UsuarioCadastroRequest UsuarioCadastroRequest()
         {
