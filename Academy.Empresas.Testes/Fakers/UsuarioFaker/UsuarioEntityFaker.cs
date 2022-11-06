@@ -1,6 +1,7 @@
 using Academy.Empresas.Domain.Entities;
 using Bogus.Extensions.Brazil;
 using Bogus;
+using Academy.Empresas.Domain.Shared;
 
 namespace Academy.Empresas.Testes.Fakers.Usuario
 {
@@ -50,6 +51,22 @@ namespace Academy.Empresas.Testes.Fakers.Usuario
             {
                 Id = Fake.IndexFaker,
                 Nome = Fake.Name.FirstName(),
+                Senha = Fake.Internet.Password(8, true, "", "A@1a23"),
+                Telefone = Fake.Phone.PhoneNumber(),
+                Email = Fake.Internet.Email(),
+                CPF = Fake.Person.Cpf(),
+                Role = Domain.Enum.RoleEnum.Admin,
+                DataDeNascimento = Fake.Person.DateOfBirth.ToString(),
+                Endereco = EnderecoFaker.EnderecoFaker.EnderecoEntity()
+            };
+        }
+        public static UsuarioEntity UsuarioEntityCiptSenha(string senha)
+        {
+            return new UsuarioEntity
+            {
+                Id = Fake.IndexFaker,
+                Nome = Fake.Name.FirstName(),
+                Senha = Cryptography.Encrypt(senha),
                 Telefone = Fake.Phone.PhoneNumber(),
                 Email = Fake.Internet.Email(),
                 CPF = Fake.Person.Cpf(),

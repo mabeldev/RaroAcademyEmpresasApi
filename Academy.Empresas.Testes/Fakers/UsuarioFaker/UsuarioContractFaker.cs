@@ -1,4 +1,5 @@
 using Academy.Empresas.Domain.Contracts.Usuario;
+using Academy.Empresas.Domain.Shared;
 using Bogus;
 using Bogus.Extensions.Brazil;
 
@@ -82,20 +83,20 @@ namespace Academy.Empresas.Testes.Fakers.UsuarioFaker
                 Endereco = EnderecoFaker.EnderecoFaker.EnderecoRequest()
             };
         }
-
-        // public static UsuarioRequest UsuarioAdminRequest()
-        // {
-        //     return new UsuarioRequest
-        //     {
-        //         Nome = Fake.Name.FirstName(),
-        //         Telefone = Fake.Phone.PhoneNumber(),
-        //         Email = Fake.Internet.Email(),
-        //         CPF = Fake.Person.Cpf(),
-        //         Role = Domain.Enum.RoleEnum.Admin,
-        //         DataDeNascimento = Fake.Person.DateOfBirth.ToShortDateString(),
-        //         Endereco = EnderecoFaker.EnderecoFaker.EnderecoRequest()
-        //     };
-        // }
+        public static UsuarioCadastroRequest UsuarioSenhaCriptografada(string senha)
+        {
+            return new UsuarioCadastroRequest
+            {
+                Nome = Fake.Name.FirstName(),
+                Telefone = Fake.Phone.PhoneNumber("(31) 9####-####"),
+                Email = Fake.Internet.Email(),
+                Senha = Cryptography.Encrypt(senha),
+                CPF = Fake.Person.Cpf(),
+                Role = Domain.Enum.RoleEnum.Admin,
+                DataDeNascimento = Fake.Person.DateOfBirth.ToShortDateString(),
+                Endereco = EnderecoFaker.EnderecoFaker.EnderecoRequest()
+            };
+        }
 
         public static UsuarioCadastroRequest UsuarioCadastroRequest()
         {

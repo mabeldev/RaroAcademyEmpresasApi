@@ -174,7 +174,6 @@ namespace Academy.Empresas.Testes.Services
             Assert.Equal("Sua senha é muito fraca, necessário caracteres especiais, números e letras (Aa)", excepction.Message);
         }
 
-
         [Fact(DisplayName = "Lista todos os Usuarios")]
         public async Task Get()
         {
@@ -186,6 +185,7 @@ namespace Academy.Empresas.Testes.Services
 
             Assert.True(result.ToList().Count() > 0);
         }
+        
         [Fact(DisplayName = "Lista todos os Usuarios")]
         public async Task AdminGet()
         {

@@ -18,12 +18,16 @@ namespace Academy.Empresas.Service
 
             var _senhaCriptografada = Cryptography.Encrypt(senha);
 
-            if (result != null && result.Senha == _senhaCriptografada)
+            if (result == null)
             {
-                return Token.GenerateToken(result);
+                throw new ArgumentException("Este email não está cadastrado!");
+            }
+            if (_senhaCriptografada != result.Senha)
+            {
+                throw new ArgumentException("Senha incompatível com a cadastrada!");
             }
 
-            return string.Empty;
+            return Token.GenerateToken(result);
         }
     }
 }
