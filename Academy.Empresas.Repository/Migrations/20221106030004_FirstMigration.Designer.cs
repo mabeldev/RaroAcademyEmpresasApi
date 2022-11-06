@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Academy.Empresas.Repository.Migrations
 {
     [DbContext(typeof(EmpresasApiContext))]
-    [Migration("20221102170722_FirstMigration")]
+    [Migration("20221106030004_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,7 +96,7 @@ namespace Academy.Empresas.Repository.Migrations
 
                     b.Property<string>("CPF")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("DataDeNascimento")
                         .IsRequired()
@@ -104,7 +104,7 @@ namespace Academy.Empresas.Repository.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("EnderecoId")
                         .HasColumnType("int");
@@ -125,6 +125,12 @@ namespace Academy.Empresas.Repository.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CPF")
+                        .IsUnique();
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.HasIndex("EnderecoId")
                         .IsUnique();

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Academy.Empresas.Api.Controllers;
 using Academy.Empresas.Domain.Interfaces.Service;
 using Academy.Empresas.Testes.Fakers.UsuarioFaker;

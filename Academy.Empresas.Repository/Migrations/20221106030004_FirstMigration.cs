@@ -55,9 +55,9 @@ namespace Academy.Empresas.Repository.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CPF = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CPF = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DataDeNascimento = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EnderecoId = table.Column<int>(type: "int", nullable: false)
@@ -77,6 +77,18 @@ namespace Academy.Empresas.Repository.Migrations
                 name: "IX_Empresas_EnderecoId",
                 table: "Empresas",
                 column: "EnderecoId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_CPF",
+                table: "Usuarios",
+                column: "CPF",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_Email",
+                table: "Usuarios",
+                column: "Email",
                 unique: true);
 
             migrationBuilder.CreateIndex(

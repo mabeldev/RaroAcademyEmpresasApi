@@ -19,8 +19,9 @@ namespace Academy.Empresas.Repository.Mappings
                                         (typeof(RoleEnum), prop)
             );
 
-            //builder.HasIndex(prop => prop.Email).IsUnique();
-            //builder.HasIndex(prop => prop.CPF).IsUnique();
+            builder.HasIndex(prop => prop.Email).IsUnique();
+            
+            builder.HasIndex(prop => prop.CPF).IsUnique();
 
             builder.HasOne(prop => prop.Endereco).WithOne();
         }

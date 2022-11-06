@@ -94,7 +94,7 @@ namespace Academy.Empresas.Repository.Migrations
 
                     b.Property<string>("CPF")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("DataDeNascimento")
                         .IsRequired()
@@ -102,7 +102,7 @@ namespace Academy.Empresas.Repository.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("EnderecoId")
                         .HasColumnType("int");
@@ -123,6 +123,12 @@ namespace Academy.Empresas.Repository.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CPF")
+                        .IsUnique();
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.HasIndex("EnderecoId")
                         .IsUnique();
