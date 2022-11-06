@@ -98,6 +98,7 @@ namespace Academy.Empresas.Service
             ValidacaoDeEnum(usuarioRequest);
 
             var usuarioBancoDeDados = await _usuarioRepository.GetById((int)id);
+            var _senhaCriptografada = Cryptography.Encrypt(usuarioRequest.Senha);
 
             if (!usuarioBancoDeDados.Nome.Equals(usuarioRequest.Nome))
             {
@@ -119,7 +120,10 @@ namespace Academy.Empresas.Service
             {
                 usuarioBancoDeDados.Email = usuarioRequest.Email;
             }
-            
+            if (!usuarioBancoDeDados.Senha.Equals(usuarioRequest.Senha))
+            {
+                usuarioBancoDeDados.Senha = usuarioRequest.Senha;
+            }
             if (!usuarioBancoDeDados.DataDeNascimento.Equals(usuarioRequest.DataDeNascimento))
             {
                 usuarioBancoDeDados.DataDeNascimento = usuarioRequest.DataDeNascimento;
@@ -155,11 +159,11 @@ namespace Academy.Empresas.Service
             Regex EmailRegex = new Regex(@"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$");
             if (usuarioRequest.Email.Length <= 0)
             {
-                throw new ArgumentException("Email não pode ser nulo");
+                throw new ArgumentException("Email não pode ser nulo!");
             }
             if (!EmailRegex.IsMatch(usuarioRequest.Email))
             {
-                throw new ArgumentException("Email não corresponde a um email válido");
+                throw new ArgumentException("Email não corresponde a um email válido!");
             }
         }
         private static void ValidacaoDeEndereco(UsuarioRequest usuarioRequest)
@@ -186,7 +190,7 @@ namespace Academy.Empresas.Service
 
             if (usuarioRequest.Endereco.Estado.Length <= 0)
             {
-                throw new ArgumentException("Cidade não pode ser nulo");
+                throw new ArgumentException("Estado não pode ser nulo");
             }
             if (usuarioRequest.Endereco.Numero.Length <= 0)
             {
@@ -217,7 +221,7 @@ namespace Academy.Empresas.Service
         }
         private static void ValidacaoDeTelefone(UsuarioRequest usuarioRequest)
         {
-            Regex TelefoneRegex = new Regex(@"^\(?[1-9]{2}\)?\s?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$");
+            Regex TelefoneRegex = new Regex(@"^\(?[1-9]{2}\)?\s?(?:[0-9]|9[0-9])[0-9]{3}\-?[0-9]{4}$");
             if (!TelefoneRegex.IsMatch(usuarioRequest.Telefone))
             {
                 throw new ArgumentException("Telefone não corresponde a um telefone válido");

@@ -48,5 +48,15 @@ namespace Academy.Empresas.Testes.Fakers.EmpresaFaker
                 Endereco = EnderecoFaker.EnderecoFaker.EnderecoEntity()
             };
         }
+        public static async Task<EmpresaEntity> EmpresaEntityBaseRequestAsync(string nome)
+        {
+            return new EmpresaEntity()
+            {
+                Id = Fake.IndexFaker,
+                Nome = nome,
+                NomeFantasia = Fake.Name.FirstName(),
+                Endereco = EnderecoFaker.EnderecoFaker.EnderecoEntity()
+            };
+        }
     }
 }

@@ -64,6 +64,7 @@ namespace Academy.Empresas.Testes.Fakers.Usuario
             {
                 Id = Fake.IndexFaker,
                 Nome = nome,
+                Senha = Fake.Internet.Password(8, true, "", "A@1a23"),
                 Telefone = Fake.Phone.PhoneNumber(),
                 Email = Fake.Internet.Email(),
                 CPF = Fake.Person.Cpf(),
