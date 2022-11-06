@@ -1,5 +1,4 @@
 using Academy.Empresas.Domain.Contracts.Usuario;
-using Academy.Empresas.Domain.Enum;
 using Academy.Empresas.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -1,4 +1,3 @@
-
 using Academy.Empresas.Domain.Contracts.Endereco;
 using Academy.Empresas.Domain.Enum;
 

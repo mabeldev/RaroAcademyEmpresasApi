@@ -1,5 +1,3 @@
-using Academy.Empresas.Domain.Contracts.Endereco;
-
 namespace Academy.Empresas.Domain.Entities
 {
     public class EmpresaEntity : BaseEntity
