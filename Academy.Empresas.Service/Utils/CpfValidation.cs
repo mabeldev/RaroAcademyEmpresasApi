@@ -17,6 +17,10 @@ namespace Academy.Empresas.Service.Utils
                 return false;
             }
 
+            var repetidos = int.Parse(string.Concat(cpf.GroupBy(x => x).Select(x => x.Count())));
+            if (repetidos == 11)
+                return false;
+
             tempCpf = cpf.Substring(0, 9);
             soma = 0;
             for (int i = 0; i < 9; i++)
@@ -55,5 +59,5 @@ namespace Academy.Empresas.Service.Utils
             digito = digito + resto.ToString();
             return cpf.EndsWith(digito);
         }
-    }   
+    }
 }
