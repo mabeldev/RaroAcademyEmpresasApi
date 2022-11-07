@@ -43,7 +43,8 @@ namespace Academy.Empresas.Testes.Services
 
             Assert.Equal("Este email não está cadastrado!", excepction.Message);
         }
-        [Fact(DisplayName = "Tenta Logar Com email não cadastrado")]
+
+        [Fact(DisplayName = "Tenta Logar Senha invalida")]
         public async Task LoginComSenhaIncompativel()
         {
             var user = UsuarioContractFaker.UsuarioCadastroRequest();
